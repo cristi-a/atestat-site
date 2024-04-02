@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metoda bulelor</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <header>
+        <h1>Metoda bulelor</h1>
+    </header>
+    <nav>
+        <a href="home.html">Pagina principală</a>
+        <a href="bubble.html">Metoda bulelor</a>
+        <a href="selection.html">Sortarea prin selecție</a>
+        <a href="insertion.html">Sortarea prin inserare</a>
+        <a href="merge.html">Sortarea prin interclasare</a>
+        <a href="quick.html">QuickSort</a>
+    </nav>
+    <section>
+        <div class="algorithm-info">
+            <h2>Metoda bulelor - O(N<sup>2</sup>)</h2>
+            <p>Cunoscută și sub numele <i>Bubble sort</i>, metoda bulelor se bazează pe următoarea idee:</p>
+            <ul>
+                <li>fie un vector v[] cu n elemente;</li>
+                <li>parcurgem vectorul și pentru oricare două elemente învecinate care nu sunt în ordinea dorită, le interschimbăm valorile;</li>
+                <li>după o singură parcurgere, vectorul nu se v a sorta, dar putem repeta parcurgerea;</li>
+                <li>dacă la o parcurgere nu se face nicio interschimbare, vectorul este sortat</li>
+            </ul>
+            <p>O reprezentare a algoritmului este:</p>
+            <ul>
+                <li>cât timp vectorul nu este sortat:</li>
+                <li>parcurgem vectorul</li>
+                <li>dacă două elemente învecinate nu sjunt în ordinea dorită le interschimbăm și schimbăm presupunerea inițială</li>
+            </ul>
+            <h3>Algoritm:</h3>
+            <pre>
+                <code>
+                    void metodaBulelor(int v[], int n) 
+                    {
+                        bool sortat = true;
+                        do 
+                        {
+                            sortat = true;
+                            for(int i=1; i&lt;=n; i++)
+                            {
+                                if(v[i] > v[i+1]) 
+                                {
+                                    int aux = v[i];
+                                    v[i] = v[j];
+                                    v[j] = aux;
+                                    sortat = false;
+                                }
+                            }
+                        }while(!sortat);
+                    }
+                </code>
+            </pre>
+            <embed width="640" height="360" src="https://www.youtube.com/embed/Cq7SMsQBEUw?mute=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></embed>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Algoritmi de sortare</p>
+    </footer>
+</body>
+</html>

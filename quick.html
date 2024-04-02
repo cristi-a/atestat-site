@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickSort</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <header>
+        <h1>QuickSort</h1>
+    </header>
+    <nav>
+        <a href="home.html">Pagina principală</a>
+        <a href="bubble.html">Metoda bulelor</a>
+        <a href="selection.html">Sortarea prin selecție</a>
+        <a href="insertion.html">Sortarea prin inserare</a>
+        <a href="merge.html">Sortarea prin interclasare</a>
+        <a href="quick.html">QuickSort</a>
+    </nav>
+    <section>
+        <div class="algorithm-info">
+            <h2>QuickSort - O(Nlog<sub>2</sub>N)</h2>
+            <p><b>QuickSort</b> sau Sortarea rapidă este o metodă eficientă de sortare a unui tablou, descoperită în anul 1960 de programatorul britanic C.A.R. Hoare.</p>
+            <p>Pentru un set de n valori oarecare, algoritmul efectuează O(Nlog<sub>2</sub>N) comparații, dar în cazul cel mai nefavorabil se efectuează O(N<sup>2</sup>) comparații.</p>
+            <p>Algoritmul este de tip <a href = "https://ro.wikipedia.org/wiki/Divide_et_impera">divide et impera</a>; el sortează o secvență a tabloului, inițial întreg tabloul, astfel</p>
+            <ul>
+                <li>se alege un element special al listei, numit <b>pivot</b>;</li>
+                <li>se ordonează elementele listei, astfel încât toate elementele din stânga pivotului să fie mai mici sau egale cu acesta, și toate elementele din dreapta pivotului să fie mai mari sau egale cu acesta;</li>
+                <li>se continuă recursiv cu secvența din stânga pivotului și cu cea din dreapta lui.</li>
+            </ul>
+            <h3>Algoritm:</h3>
+            <pre>
+                <code>
+                    void QuickSort(int v[], int st, int dr)
+                    {
+	                    if(st &lt; dr)
+	                    {
+		                    //pivotul este inițial v[st]
+		                    int m = (st + dr) / 2;
+		                    int aux = v[st];
+		                    v[st] = v[m];
+		                    v[m] = aux;
+		                    int i = st , j = dr, d = 0;
+		                    while(i &lt; j)
+		                    {
+			                    if(v[i] > v[j])
+			                    {
+				                    aux = v[i]; 
+				                    v[i] = v[j];
+				                    v[j] = aux;
+				                    d = 1 - d;
+			                    }
+			                    i += d;
+			                    j -= 1 - d;
+		                    }
+		                    QuickSort(v, st , i - 1);
+		                    QuickSort(v, i + 1 , dr);
+	                    }
+                    }       
+                </code>
+            </pre>
+            <embed width="640" height="360" src="https://www.youtube.com/embed/8hEyhs3OV1w?mute=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></embed>
+        </div>        
+    </section>
+    <footer>
+        <p>&copy; 2024 Algoritmi de sortare</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortarea prin interclasare</title>
+    <link rel = "stylesheet" href = "style.css">
+</head>
+<body>
+    <header>
+        <h1>Sortarea prin interclasare</h1>
+    </header>
+    <nav>
+        <a href="home.html">Pagina principală</a>
+        <a href="bubble.html">Metoda bulelor</a>
+        <a href="selection.html">Sortarea prin selecție</a>
+        <a href="insertion.html">Sortarea prin inserare</a>
+        <a href="merge.html">Sortarea prin interclasare</a>
+        <a href="quick.html">QuickSort</a>
+    </nav>
+    <section>
+        <div class="algorithm-info">
+            <h2>Sortarea prin interclasare - O(Nlog<sub>2</sub>N)</h2>
+            <p><b>Sortarea prin intercalsare</b>, sau <b>Mergesort</b> este o metodă eficientă de sortare a elementelor unui tablou, bazată pe următoarea idee:</p>
+            <p>Dacă prima jumătate a tabloului are elementele sortate și a doua jumătate are de asemenea elementele sortate, prin interclasare se va obține tabloul sortat.</p>
+            <p>Sortarea prin interclasare este un exemplu tipic de algoritm <a href = "https://ro.wikipedia.org/wiki/Divide_et_impera">divide et impera</a>: se sortează o secvență delimitată de indicii st și dr:</p>
+            <ul>
+                <li>dacă st == dr, problema este elementară, secvența fiind deja sortată</li>
+                <li>dacă st &lt; dr
+                    <ul>
+                        <li>se împarte problema în subprobleme, identificând mijlocul secvenței, m = (st + dr) / 2</li>
+                        <li>se rezolvă subprobleme, sortând secvența delimitată de st și m, respectiv  secvența delimitată de m+1 și dr - apeluri recursive</li>
+                        <li>se combină soluțiile, interclasând cele două secvențe; în acest fel, secvența delimitată de st și dr este sortată</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Algoritm:</h3>
+            <pre>
+                <code>
+                    int v[nmax+5];
+
+                    void mergeSort(int left, int right) 
+                    {
+                        if(left == right) return;
+                        int mid = (left + right) / 2;
+                        mergeSort(left, mid);
+                        mergeSort(mid+1, right);
+                        int i = left, j = mid + 1;
+                        vector&lt;int> temp;
+                        while(i &lt;=mid and j &lt;= right)
+                            if(v[i] &lt; v[j]) temp.emplace_back(v[i++]);
+                            else temp.emplace_back(v[j++]);
+                        while(i &lt;= mid) temp.emplace_back(v[i++]);
+                        while(j &lt;= right) temp.emplace_back(v[j++]);
+                        for(i=0; i&lt;temp.size(); i++) v[left+i] = temp[i];
+                    }
+                </code>
+            </pre>
+            <embed width="640" height="360" src="https://www.youtube.com/embed/ZRPoEKHXTJg?mute=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></embed>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Algoritmi de sortare</p>
+    </footer>
+</body>
+</html>
