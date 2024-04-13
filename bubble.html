@@ -48,8 +48,8 @@
                                 if(v[i] > v[i+1]) 
                                 {
                                     int aux = v[i];
-                                    v[i] = v[j];
-                                    v[j] = aux;
+                                    v[i] = v[i+1];
+                                    v[i+1] = aux;
                                     sortat = false;
                                 }
                             }
